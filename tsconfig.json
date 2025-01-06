@@ -1,6 +1,12 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "react-native",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
     "strict": true,
     "paths": {
       "@/*": [
