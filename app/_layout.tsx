@@ -13,17 +13,35 @@ const Layout = () => {
   );
 };
 
-const AuthWrapper: React.FC = ({ children }) => {
+const AuthWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const auth = useSelector((state: RootState) => state.auth);
   const router = useRouter();
 
   useEffect(() => {
-    if (auth.isAuthenticated) {
-      router.replace("/home");
+    if (__DEV__) {
+      // В режиме разработки разрешаем регистрацию без редиректа
+      const publicRoutes = [
+        "/auth/login",
+        "/auth/register-step1",
+        "/auth/register-step2",
+        "/auth/register-step3",
+        "/auth/register-success"
+      ];
+
+      if (auth.isAuthenticated) {
+        router.replace("/home");
+      } else if (!publicRoutes.includes(router.pathname)) {
+        router.replace("/screens/login");
+      }
     } else {
-      router.replace("/auth/login");
+      // В продакшене - строгая логика
+      if (auth.isAuthenticated) {
+        router.replace("/home");
+      } else {
+        router.replace("/screens/login");
+      }
     }
-  }, [auth.isAuthenticated]);
+  }, [auth.isAuthenticated, router.pathname]);
 
   return <>{children}</>;
 };
