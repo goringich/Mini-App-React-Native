@@ -35,7 +35,7 @@ const LoginScreen: React.FC = () => {
 
   const imageTranslateY = useRef(new Animated.Value(0)).current;
   
-  const paramTranslateY = useRef(new Animated.Value(0)).current;
+  const paramTranslateY = useRef(new Animated.Value(1)).current;
 
 
   useEffect(() => {
@@ -84,7 +84,7 @@ const LoginScreen: React.FC = () => {
           useNativeDriver: true,
         }),
         Animated.timing(paramTranslateY, {
-          toValue: 1,
+          toValue: 0,
           duration: 500,
           useNativeDriver: true,
         }),
@@ -113,7 +113,7 @@ const LoginScreen: React.FC = () => {
           useNativeDriver: true,
         }),
         Animated.timing(paramTranslateY, {
-          toValue: 0,
+          toValue: 1,
           duration: 500,
           useNativeDriver: true,
         }),

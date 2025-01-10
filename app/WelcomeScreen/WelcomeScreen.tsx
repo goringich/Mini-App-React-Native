@@ -5,7 +5,6 @@ import muscleImage from "../../assets/images/login/react-logo.png";
 import Title from "./components/Title";
 import ImageWrapper from "./components/ImageWrapper";
 
-
 interface WelcomeScreenProps {
   translateY: Animated.Value;
   paramTranslateY: Animated.Value;
@@ -40,15 +39,17 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   panHandlers,
   onImagePress,
 }) => {
+  // Интерполяция масштаба напрямую от paramTranslateY
   const adjustedScaleImage = paramTranslateY.interpolate({
     inputRange: [0, 1],
-    outputRange: [1, 0.5],
+    outputRange: [0.65, 1],
     extrapolate: "clamp",
-  })
+  });
 
-  const adjustedTranslateY = adjustedScaleImage.interpolate({
-    inputRange: [0.7, 1],
-    outputRange: [250, 0],
+  // Интерполяция translateY также напрямую от paramTranslateY
+  const adjustedTranslateY = paramTranslateY.interpolate({
+    inputRange: [0, 1],
+    outputRange: [150, 0],
     extrapolate: "clamp",
   });
 
@@ -57,7 +58,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
       <Title opacity={titleOpacity} />
       <Animated.View
         style={{
-          transform: [{ translateY: Animated.add(translateY, 0) }],
+          transform: [{ translateY: translateY }],
           pointerEvents: "auto",
           position: "absolute",
           width: "100%",
@@ -71,11 +72,11 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
         }}
         {...panHandlers}
       >
-        <TouchableOpacity onPress={onImagePress} style={[styles.touchable, { zIndex: 10 }]}> 
+        <TouchableOpacity onPress={onImagePress} style={[styles.touchable, { zIndex: 10 }]}>
           <BackgroundFillBlack>
             <ImageWrapper
               scaleImage={adjustedScaleImage}
-              imageTranslateY={Animated.add(imageTranslateY, adjustedTranslateY)} 
+              imageTranslateY={adjustedTranslateY}
               source={muscleImage}
             />
           </BackgroundFillBlack>
