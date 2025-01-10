@@ -8,7 +8,6 @@ import ImageWrapper from "./components/ImageWrapper";
 
 interface WelcomeScreenProps {
   translateY: Animated.Value;
-  scaleImage: Animated.AnimatedInterpolation;
   imageTranslateY: Animated.Value;
   titleOpacity: Animated.Value;
   panHandlers: any;
@@ -22,20 +21,19 @@ const styles = StyleSheet.create({
 });
 
 const BackgroundFillBlack = styled.View`
-  width: 100%;
+  width: 80%;
   height: 100%;
-  background-color: black;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  background-color: #121212;
+  border-bottom-left-radius: 90px;
+  border-bottom-right-radius: 90px;
   position: relative;
-  // bottom: 15px;
+
+  bottom: 15px;
 `;
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   translateY,
-  // scaleImage,
   imageTranslateY,
-  // borderBottomPosition,
   titleOpacity,
   panHandlers,
   onImagePress,
@@ -51,7 +49,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
       <Title opacity={titleOpacity} />
       <Animated.View
         style={{
-          transform: [{ translateY: Animated.add(translateY, 15) }],
+          transform: [{ translateY: Animated.add(translateY, 0) }],
           pointerEvents: "auto",
           position: "absolute",
           width: "100%",

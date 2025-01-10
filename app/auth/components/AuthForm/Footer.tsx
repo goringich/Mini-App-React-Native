@@ -28,15 +28,24 @@ const FooterTextStyled = styled.Text`
   margin: 10px 0 15px;
 `;
 
+const FooterTextWithoutUnderlineStyled = styled.Text`
+  color: rgba(255, 255, 255, 0.7);
+  text-align: right;
+  text-decoration-line: none;
+  margin: 10px 0 15px;
+`;
+
+
 const HighlightTextStyled = styled.Text`
   color: #ffbe17;
-  text-decoration-line: none;
+  text-decoration-line: underline;
   margin-left: 5px; 
 `;
 
 const Footer: React.FC<FooterProps> & {
   FooterText: React.FC<FooterTextProps>;
   HighlightText: React.FC<HighlightTextProps>;
+  HighlightTextNotUnder: React.FC<FooterTextProps>;
 } = ({ children }) => {
   return <FooterContainer>{children}</FooterContainer>;
 };
@@ -49,7 +58,12 @@ const HighlightText: React.FC<HighlightTextProps> = ({ text }) => {
   return <HighlightTextStyled>{text}</HighlightTextStyled>;
 };
 
+const FooterTextWithoutUnderline: React.FC<FooterTextProps> = ({ text }) => {
+  return <FooterTextWithoutUnderlineStyled>{text}</FooterTextWithoutUnderlineStyled>;
+};
+
 Footer.FooterText = FooterText;
 Footer.HighlightText = HighlightText;
+Footer.HighlightTextNotUnder = FooterTextWithoutUnderline;
 
 export default Footer;

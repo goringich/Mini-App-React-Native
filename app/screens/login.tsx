@@ -101,7 +101,7 @@ const LoginScreen: React.FC = () => {
     Animated.sequence([
       Animated.parallel([
         Animated.timing(translateY, {
-          toValue: 0,
+          toValue: 16,
           duration: 700,
           useNativeDriver: true,
         }),

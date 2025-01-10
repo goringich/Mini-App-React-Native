@@ -18,6 +18,7 @@ interface AuthFormProps {
 
 const AuthScreen = styled(Animated.View)`
   position: absolute;
+  top: 16px;
   width: 100%;
   height: 100%;
   align-items: center;
@@ -68,7 +69,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
           </TouchableOpacity>
         )}
         <Footer>
-          <Footer.FooterText text="You don't have an account? " style={{textDecorationLine: "none"}}/>
+          <Footer.HighlightTextNotUnder text="You don't have an account? "/>
           <TouchableOpacity>
             <Footer.HighlightText text="Sign Up" />
           </TouchableOpacity>
