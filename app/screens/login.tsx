@@ -33,8 +33,10 @@ const LoginScreen: React.FC = () => {
   const overlayOpacity = useRef(new Animated.Value(0)).current;
   const swipeIndicatorOpacity = useRef(new Animated.Value(1)).current;
 
-  const imageTranslateY = useRef(new Animated.Value(100)).current;
-  const borderBottomPosition = useRef(new Animated.Value(0)).current;
+  const imageTranslateY = useRef(new Animated.Value(0)).current;
+  
+  const paramTranslateY = useRef(new Animated.Value(0)).current;
+
 
   useEffect(() => {
     Animated.timing(titleOpacity, {
@@ -81,6 +83,11 @@ const LoginScreen: React.FC = () => {
           duration: 500,
           useNativeDriver: true,
         }),
+        Animated.timing(paramTranslateY, {
+          toValue: 1,
+          duration: 500,
+          useNativeDriver: true,
+        }),
         Animated.timing(swipeIndicatorOpacity, {
           toValue: 0,
           duration: 300,
@@ -103,6 +110,11 @@ const LoginScreen: React.FC = () => {
         Animated.timing(translateY, {
           toValue: 16,
           duration: 700,
+          useNativeDriver: true,
+        }),
+        Animated.timing(paramTranslateY, {
+          toValue: 0,
+          duration: 500,
           useNativeDriver: true,
         }),
         Animated.timing(swipeIndicatorOpacity, {
@@ -142,8 +154,8 @@ const LoginScreen: React.FC = () => {
         {/* Welcome Screen */}
         <WelcomeScreen
           translateY={translateY}
-          // scaleImage={scaleImage}
           imageTranslateY={imageTranslateY}
+          paramTranslateY={paramTranslateY}
           titleOpacity={titleOpacity}
           panHandlers={panResponder.panHandlers}
           onImagePress={toggleLoginForm}

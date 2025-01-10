@@ -30,7 +30,7 @@ const AuthScreen = styled(Animated.View)`
 const FormContainer = styled(Animated.View)`
   width: 90%;
   max-width: 350px;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 `;
 
 const AuthForm: React.FC<AuthFormProps> = ({

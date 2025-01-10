@@ -8,6 +8,7 @@ import ImageWrapper from "./components/ImageWrapper";
 
 interface WelcomeScreenProps {
   translateY: Animated.Value;
+  paramTranslateY: Animated.Value;
   imageTranslateY: Animated.Value;
   titleOpacity: Animated.Value;
   panHandlers: any;
@@ -33,16 +34,23 @@ const BackgroundFillBlack = styled.View`
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   translateY,
+  paramTranslateY,
   imageTranslateY,
   titleOpacity,
   panHandlers,
   onImagePress,
 }) => {
-  const adjustedScaleImage = translateY.interpolate({
-    inputRange: [350, 544],
-    outputRange: [0.7, 0.3],
+  const adjustedScaleImage = paramTranslateY.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0.5],
     extrapolate: "clamp",
   })
+
+  const adjustedTranslateY = adjustedScaleImage.interpolate({
+    inputRange: [0.7, 1],
+    outputRange: [250, 0],
+    extrapolate: "clamp",
+  });
 
   return (
     <>
@@ -67,7 +75,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           <BackgroundFillBlack>
             <ImageWrapper
               scaleImage={adjustedScaleImage}
-              imageTranslateY={imageTranslateY}
+              imageTranslateY={Animated.add(imageTranslateY, adjustedTranslateY)} 
               source={muscleImage}
             />
           </BackgroundFillBlack>

@@ -37,8 +37,6 @@ const styles = StyleSheet.create({
     width: 444,
     resizeMode: "contain",
     bottom: 0,
-    // borderBottomRightRadius: 30,
-    // borderBottomLeftRadius: 30,
   },
   touchable: {
     alignItems: "center",
@@ -50,8 +48,6 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     flex: 1,
     justifyContent: "flex-end",
-    // borderBottomRightRadius: 30,
-    // borderBottomLeftRadius: 30,
   },
 });
 
