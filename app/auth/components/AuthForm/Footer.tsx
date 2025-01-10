@@ -22,11 +22,13 @@ const FooterContainer = styled.View`
 
 const FooterTextStyled = styled.Text`
   color: white;
-  text-align: center;
+  text-align: right;
+  text-decoration: underline !important;
+  margin: 10px 0 15px;
 `;
 
 const HighlightTextStyled = styled.Text`
-  color: #ff9900;
+  color: #FFBE17;
   font-weight: bold;
 `;
 

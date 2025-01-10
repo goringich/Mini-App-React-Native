@@ -15,7 +15,7 @@ const screenWidth = Dimensions.get("window").width;
 
 const Container = styled.View`
   flex: 1;
-  background-color: black;
+  background-color: #121212;
   position: relative;
 `;
 
@@ -28,12 +28,12 @@ const LoginScreen: React.FC = () => {
   const auth = useSelector((state: RootState) => state.auth);
 
   // Animated values
-  const translateY = useRef(new Animated.Value(0)).current; // For moving the WelcomeScreen
+  const translateY = useRef(new Animated.Value(16)).current; // For moving the WelcomeScreen
   const titleOpacity = useRef(new Animated.Value(1)).current;
   const overlayOpacity = useRef(new Animated.Value(0)).current;
   const swipeIndicatorOpacity = useRef(new Animated.Value(1)).current;
 
-  const imageTranslateY = useRef(new Animated.Value(200)).current;
+  const imageTranslateY = useRef(new Animated.Value(100)).current;
   const borderBottomPosition = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -43,13 +43,6 @@ const LoginScreen: React.FC = () => {
       useNativeDriver: true,
     }).start();
   }, []);
-
-  // Image scale based on translateY
-  const scaleImage = translateY.interpolate({
-    inputRange: [-450, 0],
-    outputRange: [0.5, 1],
-    extrapolate: "clamp",
-  });
 
   // For swipe
   const panResponder = PanResponder.create({
@@ -88,20 +81,15 @@ const LoginScreen: React.FC = () => {
           duration: 500,
           useNativeDriver: true,
         }),
-        Animated.timing(swipeIndicatorOpacity, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true,
-        }),
+        // Animated.timing(swipeIndicatorOpacity, {
+        //   toValue: 0,
+        //   duration: 300,
+        //   useNativeDriver: true,
+        // }),
         Animated.timing(titleOpacity, {
           toValue: 0,
           duration: 500,
           useNativeDriver: true,
-        }),
-        Animated.timing(borderBottomPosition, {
-          toValue: 0,
-          duration: 500,
-          useNativeDriver: false,
         }),
       ]),
     ]).start(() => {
@@ -117,20 +105,15 @@ const LoginScreen: React.FC = () => {
           duration: 700,
           useNativeDriver: true,
         }),
-        Animated.timing(swipeIndicatorOpacity, {
-          toValue: 1,
-          duration: 300,
-          useNativeDriver: true,
-        }),
+        // Animated.timing(swipeIndicatorOpacity, {
+        //   toValue: 1,
+        //   duration: 300,
+        //   useNativeDriver: true,
+        // }),
         Animated.timing(titleOpacity, {
           toValue: 1,
           duration: 500,
           useNativeDriver: true,
-        }),
-        Animated.timing(borderBottomPosition, {
-          toValue: -50,
-          duration: 500,
-          useNativeDriver: false,
         }),
       ]),
     ]).start(() => {
@@ -159,9 +142,8 @@ const LoginScreen: React.FC = () => {
         {/* Welcome Screen */}
         <WelcomeScreen
           translateY={translateY}
-          scaleImage={scaleImage}
+          // scaleImage={scaleImage}
           imageTranslateY={imageTranslateY}
-          borderBottomPosition={borderBottomPosition}
           titleOpacity={titleOpacity}
           panHandlers={panResponder.panHandlers}
           onImagePress={toggleLoginForm}

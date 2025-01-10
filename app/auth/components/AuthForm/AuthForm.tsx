@@ -20,10 +20,8 @@ const AuthScreen = styled(Animated.View)`
   position: absolute;
   width: 100%;
   height: 100%;
-  justify-content: flex-start;
   align-items: center;
   background-color: transparent;
-  padding-top: 150px;
   z-index: 2;
   justify-content: flex-end;
 `;
@@ -31,8 +29,7 @@ const AuthScreen = styled(Animated.View)`
 const FormContainer = styled(Animated.View)`
   width: 90%;
   max-width: 350px;
-  border-radius: 12px;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 `;
 
 const AuthForm: React.FC<AuthFormProps> = ({
@@ -62,7 +59,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
           onChangeText={setPassword}
         />
         <TouchableOpacity>
-          <Footer.FooterText text="Forgot Password?" />
+          <Footer.FooterText text="Forgot Password?"/>
         </TouchableOpacity>
         <LoginButton onPress={handleLogin} />
         {isAuthenticated && (

@@ -9,15 +9,15 @@ interface LoginButtonProps {
 const StyledButton = styled.TouchableOpacity`
   width: 100%;
   padding: 15px;
-  background-color: #ff9900;
-  border-radius: 8px;
+  background-color: #FFBE17;
+  border-radius: 16px;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
 `;
 
 const ButtonText = styled.Text`
-  color: white;
+  color: #000;
   font-size: 16px;
   font-weight: bold;
 `;

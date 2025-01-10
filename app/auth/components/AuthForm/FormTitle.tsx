@@ -7,10 +7,10 @@ interface FormTitleProps {
 
 const TitleText = styled.Text`
   color: white;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: bold;
-  text-align: center;
-  margin-bottom: -10px;
+  text-align: left;
+  margin-bottom: 5px;
 `;
 
 const FormTitle: React.FC<FormTitleProps> = ({ text }) => {

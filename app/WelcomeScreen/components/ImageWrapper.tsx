@@ -5,14 +5,12 @@ import styled from "styled-components/native";
 interface ImageWrapperProps {
   scaleImage: Animated.AnimatedInterpolation;
   imageTranslateY: Animated.Value;
-  borderBottomPosition: Animated.Value;
   source: any;
 }
 
 const ImageWrapper: React.FC<ImageWrapperProps> = ({
   scaleImage,
   imageTranslateY,
-  borderBottomPosition,
   source,
 }) => {
   return (
@@ -36,12 +34,15 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 
 const styles = StyleSheet.create({
   image: {
-    width: 375,
+    width: 444,
     resizeMode: "contain",
-    bottom: -20,
+    bottom: 0,
+    // borderBottomRightRadius: 30,
+    // borderBottomLeftRadius: 30,
   },
   touchable: {
     alignItems: "center",
+
   },
   imageWrapper: {
     position: "relative",
@@ -49,6 +50,8 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     flex: 1,
     justifyContent: "flex-end",
+    // borderBottomRightRadius: 30,
+    // borderBottomLeftRadius: 30,
   },
 });
 
