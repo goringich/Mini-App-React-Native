@@ -12,24 +12,26 @@ interface FooterTextProps {
 interface HighlightTextProps {
   text: string;
 }
-
 const FooterContainer = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   margin-top: 10px;
+  display: flex;
 `;
 
 const FooterTextStyled = styled.Text`
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
   text-align: right;
-  text-decoration: underline !important;
+  text-decoration-line: underline;
   margin: 10px 0 15px;
 `;
 
 const HighlightTextStyled = styled.Text`
-  color: #FFBE17;
-  font-weight: bold;
+  color: #ffbe17;
+  text-decoration-line: none;
+  margin-left: 5px; 
 `;
 
 const Footer: React.FC<FooterProps> & {

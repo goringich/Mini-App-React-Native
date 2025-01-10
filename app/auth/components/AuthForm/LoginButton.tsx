@@ -13,7 +13,6 @@ const StyledButton = styled.TouchableOpacity`
   border-radius: 16px;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
 `;
 
 const ButtonText = styled.Text`

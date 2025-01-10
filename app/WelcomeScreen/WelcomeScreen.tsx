@@ -33,9 +33,9 @@ const BackgroundFillBlack = styled.View`
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   translateY,
-  scaleImage,
+  // scaleImage,
   imageTranslateY,
-  borderBottomPosition,
+  // borderBottomPosition,
   titleOpacity,
   panHandlers,
   onImagePress,

@@ -10,7 +10,11 @@ const TitleContainer = styled(Animated.View)`
   position: absolute;
   top: 136px;
   width: 353px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  align-self: center;
   z-index: 50;
 `;
 

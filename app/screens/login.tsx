@@ -81,11 +81,11 @@ const LoginScreen: React.FC = () => {
           duration: 500,
           useNativeDriver: true,
         }),
-        // Animated.timing(swipeIndicatorOpacity, {
-        //   toValue: 0,
-        //   duration: 300,
-        //   useNativeDriver: true,
-        // }),
+        Animated.timing(swipeIndicatorOpacity, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true,
+        }),
         Animated.timing(titleOpacity, {
           toValue: 0,
           duration: 500,
@@ -105,11 +105,11 @@ const LoginScreen: React.FC = () => {
           duration: 700,
           useNativeDriver: true,
         }),
-        // Animated.timing(swipeIndicatorOpacity, {
-        //   toValue: 1,
-        //   duration: 300,
-        //   useNativeDriver: true,
-        // }),
+        Animated.timing(swipeIndicatorOpacity, {
+          toValue: 1,
+          duration: 300,
+          useNativeDriver: true,
+        }),
         Animated.timing(titleOpacity, {
           toValue: 1,
           duration: 500,

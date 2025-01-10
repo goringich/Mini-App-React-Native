@@ -59,7 +59,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
           onChangeText={setPassword}
         />
         <TouchableOpacity>
-          <Footer.FooterText text="Forgot Password?"/>
+          <Footer.FooterText text="Forgot Password?" />
         </TouchableOpacity>
         <LoginButton onPress={handleLogin} />
         {isAuthenticated && (
@@ -68,8 +68,10 @@ const AuthForm: React.FC<AuthFormProps> = ({
           </TouchableOpacity>
         )}
         <Footer>
-          <Footer.FooterText text="You don't have an account? " />
-          <Footer.HighlightText text="Sign Up" />
+          <Footer.FooterText text="You don't have an account? " style={{textDecorationLine: "none"}}/>
+          <TouchableOpacity>
+            <Footer.HighlightText text="Sign Up" />
+          </TouchableOpacity>
         </Footer>
       </FormContainer>
     </AuthScreen>
