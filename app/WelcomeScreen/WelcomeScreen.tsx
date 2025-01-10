@@ -55,22 +55,15 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     marginTop: 240,
   },
-  borderBottom: {
-    // position: "absolute",
-    // bottom: 150,
-    width: "100%",
-    height: 0,
-    backgroundColor: "transparent",
-    borderBottomWidth: 15,
-    borderColor: "#FFBE17",
-  },
 });
 
 const BackgroundFillBlack = styled.View`
   width: 100%;
   height: 100%;
   background-color: black;
-  border-radius: 5%;
+  border-radius: 15%;
+  position: relative;
+  bottom: 15px;
 `;
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
@@ -126,7 +119,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
                 ]}
               />
               <Animated.View
-                style={[styles.borderBottom, { bottom: borderBottomPosition }]}
+                style={[{ bottom: borderBottomPosition }]}
               />
             </View>
           </BackgroundFillBlack>

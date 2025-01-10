@@ -19,14 +19,6 @@ const Container = styled.View`
   position: relative;
 `;
 
-const IndicatorBar = styled(Animated.View)`
-  position: absolute;
-  bottom: 0;
-  height: 4px;
-  width: 100%;
-  background-color: #ff9900;
-`;
-
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -92,7 +84,7 @@ const LoginScreen: React.FC = () => {
     Animated.sequence([
       Animated.parallel([
         Animated.timing(translateY, {
-          toValue: -450,
+          toValue: -400,
           duration: 500,
           useNativeDriver: true,
         }),
@@ -112,11 +104,6 @@ const LoginScreen: React.FC = () => {
           useNativeDriver: false,
         }),
       ]),
-      Animated.timing(overlayOpacity, {
-        toValue: 0.5,
-        duration: 300,
-        useNativeDriver: true,
-      }),
     ]).start(() => {
       setIsLoginVisible(true);
     });
@@ -124,11 +111,6 @@ const LoginScreen: React.FC = () => {
 
   const hideLoginForm = () => {
     Animated.sequence([
-      Animated.timing(overlayOpacity, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }),
       Animated.parallel([
         Animated.timing(translateY, {
           toValue: 0,
@@ -209,8 +191,6 @@ const LoginScreen: React.FC = () => {
           />
         )}
 
-        {/* Indicator Bar (Optional) */}
-        <IndicatorBar />
       </Container>
     </GestureHandlerRootView>
   );

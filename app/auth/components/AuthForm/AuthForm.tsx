@@ -25,16 +25,14 @@ const AuthScreen = styled(Animated.View)`
   background-color: transparent;
   padding-top: 150px;
   z-index: 2;
+  justify-content: flex-end;
 `;
 
 const FormContainer = styled(Animated.View)`
   width: 90%;
   max-width: 350px;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 20px;
   border-radius: 12px;
-  border: 1px solid #444;
-  margin-top: 200px;
+  margin-bottom: 70px;
 `;
 
 const AuthForm: React.FC<AuthFormProps> = ({
