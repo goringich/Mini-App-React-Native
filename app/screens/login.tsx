@@ -107,7 +107,7 @@ const LoginScreen: React.FC = () => {
           useNativeDriver: true,
         }),
         Animated.timing(borderBottomPosition, {
-          toValue: 50,
+          toValue: 0,
           duration: 500,
           useNativeDriver: false,
         }),

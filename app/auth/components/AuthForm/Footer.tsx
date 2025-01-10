@@ -27,7 +27,7 @@ const FooterTextStyled = styled.Text`
 
 const HighlightTextStyled = styled.Text`
   color: #ff9900;
-  font-weight: bold;А
+  font-weight: bold;
 `;
 
 const Footer: React.FC<FooterProps> & {

@@ -35,7 +35,7 @@ const SubTitleText = styled.Text`
   color: #ffbe17;
   text-align: center;
   font-family: Futura;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
   line-height: 29.24px;
   text-transform: uppercase;
@@ -44,7 +44,6 @@ const SubTitleText = styled.Text`
 const styles = StyleSheet.create({
   image: {
     width: 375,
-    marginTop: 240,
     resizeMode: "contain",
   },
   touchable: {
@@ -54,10 +53,11 @@ const styles = StyleSheet.create({
     position: "relative",
     alignItems: "center",
     overflow: "hidden",
+    marginTop: 240,
   },
   borderBottom: {
-    position: "absolute",
-    bottom: 150,
+    // position: "absolute",
+    // bottom: 150,
     width: "100%",
     height: 0,
     backgroundColor: "transparent",
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 
 const BackgroundFillBlack = styled.View`
   width: 100%;
-  height: 100.5%;
+  height: 100%;
   background-color: black;
   border-radius: 5%;
 `;
@@ -83,20 +83,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   onImagePress,
 }) => {
   return (
-    <Animated.View
-      style={{
-        transform: [{ translateY }],
-        pointerEvents: "auto",
-        position: "absolute",
-        width: "100%",
-        height: "80%",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 3,
-        backgroundColor: "#FFBE17",
-      }}
-      {...panHandlers}
-    >
+    <>
       <TitleContainer style={{ opacity: titleOpacity }}>
         <TitleText>
           Everything you need to achieve an
@@ -105,33 +92,47 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           <SubTitleText>sculpted physique</SubTitleText>
         </TitleText>
       </TitleContainer>
-
-      <TouchableOpacity
-        onPress={onImagePress}
-        style={[styles.touchable, { zIndex: 10 }]}
+      <Animated.View
+        style={{
+          transform: [{ translateY }],
+          pointerEvents: "auto",
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 3,
+          backgroundColor: "#FFBE17",
+        }}
+        {...panHandlers}
       >
-        <BackgroundFillBlack>
-          <View style={styles.imageWrapper}>
-            <Animated.Image
-              source={muscleImage}
-              resizeMode="contain"
-              style={[
-                styles.image,
-                {
-                  transform: [
-                    { scale: scaleImage },
-                    { translateY: imageTranslateY },
-                  ],
-                },
-              ]}
-            />
-            <Animated.View
-              style={[styles.borderBottom, { bottom: borderBottomPosition }]}
-            />
-          </View>
-        </BackgroundFillBlack>
-      </TouchableOpacity>
-    </Animated.View>
+        <TouchableOpacity
+          onPress={onImagePress}
+          style={[styles.touchable, { zIndex: 10 }]}
+        >
+          <BackgroundFillBlack>
+            <View style={styles.imageWrapper}>
+              <Animated.Image
+                source={muscleImage}
+                resizeMode="contain"
+                style={[
+                  styles.image,
+                  {
+                    transform: [
+                      { scale: scaleImage },
+                      { translateY: imageTranslateY },
+                    ],
+                  },
+                ]}
+              />
+              <Animated.View
+                style={[styles.borderBottom, { bottom: borderBottomPosition }]}
+              />
+            </View>
+          </BackgroundFillBlack>
+        </TouchableOpacity>
+      </Animated.View>
+    </>
   );
 };
 
