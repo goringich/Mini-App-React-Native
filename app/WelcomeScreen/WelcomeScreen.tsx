@@ -2,6 +2,8 @@ import React from "react";
 import { TouchableOpacity, View, StyleSheet, Animated } from "react-native";
 import styled from "styled-components/native";
 import muscleImage from "../../assets/images/login/react-logo.png";
+import Title from "./components/Title";
+import ImageWrapper from "./components/ImageWrapper";
 
 interface WelcomeScreenProps {
   translateY: Animated.Value;
@@ -13,47 +15,9 @@ interface WelcomeScreenProps {
   onImagePress: () => void;
 }
 
-const TitleContainer = styled(Animated.View)`
-  position: absolute;
-  top: 136px;
-  width: 353px;
-  align-items: center;
-  z-index: 50;
-`;
-
-const TitleText = styled.Text`
-  color: white;
-  font-family: Futura;
-  font-size: 21px;
-  font-weight: 700;
-  line-height: 29.24px;
-  text-align: center;
-  text-transform: uppercase;
-`;
-
-const SubTitleText = styled.Text`
-  color: #ffbe17;
-  text-align: center;
-  font-family: Futura;
-  font-size: 21px;
-  font-weight: 700;
-  line-height: 29.24px;
-  text-transform: uppercase;
-`;
-
 const styles = StyleSheet.create({
-  image: {
-    width: 375,
-    resizeMode: "contain",
-  },
   touchable: {
     alignItems: "center",
-  },
-  imageWrapper: {
-    position: "relative",
-    alignItems: "center",
-    overflow: "hidden",
-    marginTop: 240,
   },
 });
 
@@ -77,14 +41,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
 }) => {
   return (
     <>
-      <TitleContainer style={{ opacity: titleOpacity }}>
-        <TitleText>
-          Everything you need to achieve an
-          {"\n"}
-          <SubTitleText>aesthetic,</SubTitleText>
-          <SubTitleText>sculpted physique</SubTitleText>
-        </TitleText>
-      </TitleContainer>
+      <Title opacity={titleOpacity} />
       <Animated.View
         style={{
           transform: [{ translateY }],
@@ -96,32 +53,19 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           alignItems: "center",
           zIndex: 3,
           backgroundColor: "#FFBE17",
+          borderBottomRightRadius: 30,
+          borderBottomLeftRadius: 30,
         }}
         {...panHandlers}
       >
-        <TouchableOpacity
-          onPress={onImagePress}
-          style={[styles.touchable, { zIndex: 10 }]}
-        >
+        <TouchableOpacity onPress={onImagePress} style={[styles.touchable, { zIndex: 10 }]}> 
           <BackgroundFillBlack>
-            <View style={styles.imageWrapper}>
-              <Animated.Image
-                source={muscleImage}
-                resizeMode="contain"
-                style={[
-                  styles.image,
-                  {
-                    transform: [
-                      { scale: scaleImage },
-                      { translateY: imageTranslateY },
-                    ],
-                  },
-                ]}
-              />
-              <Animated.View
-                style={[{ bottom: borderBottomPosition }]}
-              />
-            </View>
+            <ImageWrapper
+              scaleImage={scaleImage}
+              imageTranslateY={imageTranslateY}
+              borderBottomPosition={borderBottomPosition}
+              source={muscleImage}
+            />
           </BackgroundFillBlack>
         </TouchableOpacity>
       </Animated.View>

@@ -38,13 +38,18 @@ const styles = StyleSheet.create({
   image: {
     width: 375,
     resizeMode: "contain",
+    bottom: -20,
+  },
+  touchable: {
+    alignItems: "center",
   },
   imageWrapper: {
     position: "relative",
     alignItems: "center",
     overflow: "hidden",
-    backgroundColor: "black",
-  }
+    flex: 1,
+    justifyContent: "flex-end",
+  },
 });
 
 export default ImageWrapper;
