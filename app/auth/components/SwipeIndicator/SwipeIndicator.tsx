@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import { Animated } from "react-native";
+import SwipeButton from "./SwipeButton";
 
 interface SwipeIndicatorProps {
   onLayout: (event: any) => void;
@@ -19,7 +20,7 @@ const StyledSwipeIndicator = styled(Animated.Text)`
 const SwipeIndicator: React.FC<SwipeIndicatorProps> = ({ onLayout, style }) => {
   return (
     <StyledSwipeIndicator onLayout={onLayout} style={style}>
-      Swipe ↑ or Tap
+      <SwipeButton />
     </StyledSwipeIndicator>
   );
 };
