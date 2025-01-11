@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { StyleSheet, Dimensions, Animated, PanResponder } from "react-native";
+import { Dimensions, Animated, PanResponder } from "react-native";
 import styled from "styled-components/native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,8 +10,11 @@ import Overlay from "../auth/components/Overlay";
 import WelcomeScreen from "../WelcomeScreen/WelcomeScreen";
 import SwipeIndicator from "../auth/components/SwipeIndicator/SwipeIndicator";
 import AuthForm from "../auth/components/AuthForm/AuthForm";
-
-const screenWidth = Dimensions.get("window").width;
+import {
+  createAnimatedValues,
+  showLoginFormAnimation,
+  hideLoginFormAnimation,
+} from "../../animations/animations";
 
 const Container = styled.View`
   flex: 1;
@@ -27,38 +30,19 @@ const LoginScreen: React.FC = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state: RootState) => state.auth);
 
-  // Animated values
-  const translateY = useRef(new Animated.Value(16)).current; // For moving the WelcomeScreen
-  const titleOpacity = useRef(new Animated.Value(1)).current;
-  const overlayOpacity = useRef(new Animated.Value(0)).current;
-  const swipeIndicatorOpacity = useRef(new Animated.Value(1)).current;
-
-  const imageTranslateY = useRef(new Animated.Value(0)).current;
-  
-  const paramTranslateY = useRef(new Animated.Value(1)).current;
-
+  // Создаём анимированные значения
+  const { translateY, titleOpacity, overlayOpacity, swipeIndicatorOpacity, imageTranslateY, paramTranslateY } =
+    useRef(createAnimatedValues()).current;
 
   useEffect(() => {
-    Animated.timing(titleOpacity, {
-      toValue: 1,
-      duration: 0,
-      useNativeDriver: true,
-    }).start();
+    titleOpacity.setValue(1);
   }, []);
 
-  // For swipe
   const panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: (_, gesture) => {
-      const shouldSet =
-        Math.abs(gesture.dy) > Math.abs(gesture.dx) &&
-        Math.abs(gesture.dy) > 10;
-      if (shouldSet) {
-        console.log("PanResponder activated");
-      }
-      return shouldSet;
+      return Math.abs(gesture.dy) > Math.abs(gesture.dx) && Math.abs(gesture.dy) > 10;
     },
     onPanResponderRelease: (_, gesture) => {
-      // If swipe up, toggle the login form
       if (gesture.dy < -50) {
         toggleLoginForm();
       }
@@ -66,92 +50,28 @@ const LoginScreen: React.FC = () => {
   });
 
   const toggleLoginForm = () => {
-    console.log("toggleLoginForm called");
     if (isLoginVisible) {
-      hideLoginForm();
-      console.log("Login is not Visible");
+      hideLoginFormAnimation(translateY, paramTranslateY, swipeIndicatorOpacity, titleOpacity, setIsLoginVisible);
     } else {
-      showLoginForm();
+      showLoginFormAnimation(translateY, paramTranslateY, swipeIndicatorOpacity, titleOpacity, setIsLoginVisible);
     }
-  };
-
-  const showLoginForm = () => {
-    Animated.sequence([
-      Animated.parallel([
-        Animated.timing(translateY, {
-          toValue: -400,
-          duration: 500,
-          useNativeDriver: true,
-        }),
-        Animated.timing(paramTranslateY, {
-          toValue: 0,
-          duration: 500,
-          useNativeDriver: true,
-        }),
-        Animated.timing(swipeIndicatorOpacity, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true,
-        }),
-        Animated.timing(titleOpacity, {
-          toValue: 0,
-          duration: 500,
-          useNativeDriver: true,
-        }),
-      ]),
-    ]).start(() => {
-      setIsLoginVisible(true);
-    });
-  };
-
-  const hideLoginForm = () => {
-    Animated.sequence([
-      Animated.parallel([
-        Animated.timing(translateY, {
-          toValue: 16,
-          duration: 700,
-          useNativeDriver: true,
-        }),
-        Animated.timing(paramTranslateY, {
-          toValue: 1,
-          duration: 500,
-          useNativeDriver: true,
-        }),
-        Animated.timing(swipeIndicatorOpacity, {
-          toValue: 1,
-          duration: 300,
-          useNativeDriver: true,
-        }),
-        Animated.timing(titleOpacity, {
-          toValue: 1,
-          duration: 500,
-          useNativeDriver: true,
-        }),
-      ]),
-    ]).start(() => {
-      setIsLoginVisible(false);
-    });
   };
 
   const handleLogin = () => {
     const fakeToken = "1234567890";
     dispatch(login({ email, token: fakeToken }));
-    console.log("Logged in:", email);
-    hideLoginForm();
+    hideLoginFormAnimation(translateY, paramTranslateY, swipeIndicatorOpacity, titleOpacity, setIsLoginVisible);
   };
 
   const handleLogout = () => {
     dispatch(logout());
-    console.log("Logged out");
   };
 
   return (
     <GestureHandlerRootView style={{ flex: 1, overflow: "hidden" }}>
       <Container>
-        {/* Overlay */}
         <Overlay opacity={overlayOpacity} isVisible={isLoginVisible} />
 
-        {/* Welcome Screen */}
         <WelcomeScreen
           translateY={translateY}
           imageTranslateY={imageTranslateY}
@@ -161,18 +81,15 @@ const LoginScreen: React.FC = () => {
           onImagePress={toggleLoginForm}
         />
 
-        {/* Swipe Indicator */}
         <SwipeIndicator
-          onLayout={(event) =>
-            setSwipeIndicatorWidth(event.nativeEvent.layout.width)
-          }
+          onLayout={(event) => setSwipeIndicatorWidth(event.nativeEvent.layout.width)}
           style={{
             transform: [{ translateX: -swipeIndicatorWidth / 2 }],
             opacity: swipeIndicatorOpacity,
           }}
+          onPress={toggleLoginForm} 
         />
 
-        {/* Auth Form */}
         {isLoginVisible && (
           <AuthForm
             email={email}
@@ -184,7 +101,6 @@ const LoginScreen: React.FC = () => {
             isAuthenticated={auth.isAuthenticated}
           />
         )}
-
       </Container>
     </GestureHandlerRootView>
   );

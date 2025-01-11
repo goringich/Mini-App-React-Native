@@ -1,10 +1,14 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Svg, { Circle } from 'react-native-svg';
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import Svg, { Circle } from "react-native-svg";
 
-const SwipeButton = () => {
+interface SwipeButtonProps {
+  onPress: () => void;
+}
+
+const SwipeButton: React.FC<SwipeButtonProps> = ({ onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.7} style={styles.container}>
       <Text style={styles.text}>Swipe</Text>
       <View style={styles.circleContainer}>
         <Svg height="37" width="37">
@@ -13,27 +17,27 @@ const SwipeButton = () => {
           <Circle cx={17} cy={17} r={10} stroke="rgba(255,255,255,0.5)" strokeWidth={1} fill="rgba(255,255,255,0.7)" />
         </Svg>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    position: 'absolute',
+    flexDirection: "row",
+    alignItems: "center",
+    position: "absolute",
     bottom: 30,
   },
   text: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 22,
     marginRight: 8,
   },
   circleContainer: {
     width: 34,
     height: 34,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

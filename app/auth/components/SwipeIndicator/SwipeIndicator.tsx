@@ -6,6 +6,7 @@ import SwipeButton from "./SwipeButton";
 interface SwipeIndicatorProps {
   onLayout: (event: any) => void;
   style: object;
+  onPress: () => void;
 }
 
 const StyledSwipeIndicator = styled(Animated.Text)`
@@ -17,10 +18,10 @@ const StyledSwipeIndicator = styled(Animated.Text)`
   z-index: 1000;
 `;
 
-const SwipeIndicator: React.FC<SwipeIndicatorProps> = ({ onLayout, style }) => {
+const SwipeIndicator: React.FC<SwipeIndicatorProps> = ({ onLayout, style, onPress }) => {
   return (
     <StyledSwipeIndicator onLayout={onLayout} style={style}>
-      <SwipeButton />
+      <SwipeButton onPress={onPress}/>
     </StyledSwipeIndicator>
   );
 };
