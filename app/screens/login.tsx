@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Animated, PanResponder } from "react-native";
+import { useRouter } from "expo-router"; //temp
 import styled from "styled-components/native";
 import { Colors } from "@colors";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -28,10 +29,17 @@ const LoginScreen: React.FC = () => {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
   const dispatch = useDispatch();
   const auth = useSelector((state: RootState) => state.auth);
+  const router = useRouter();
 
   // Создаём анимированные значения
-  const { translateY, titleOpacity, overlayOpacity, swipeIndicatorOpacity, imageTranslateY, paramTranslateY } =
-    useRef(createAnimatedValues()).current;
+  const {
+    translateY,
+    titleOpacity,
+    overlayOpacity,
+    swipeIndicatorOpacity,
+    imageTranslateY,
+    paramTranslateY,
+  } = useRef(createAnimatedValues()).current;
 
   useEffect(() => {
     titleOpacity.setValue(1);
@@ -39,7 +47,9 @@ const LoginScreen: React.FC = () => {
 
   const panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: (_, gesture) => {
-      return Math.abs(gesture.dy) > Math.abs(gesture.dx) && Math.abs(gesture.dy) > 10;
+      return (
+        Math.abs(gesture.dy) > Math.abs(gesture.dx) && Math.abs(gesture.dy) > 10
+      );
     },
     onPanResponderRelease: (_, gesture) => {
       if (gesture.dy < -50) {
@@ -50,16 +60,39 @@ const LoginScreen: React.FC = () => {
 
   const toggleLoginForm = () => {
     if (isLoginVisible) {
-      hideLoginFormAnimation(translateY, paramTranslateY, swipeIndicatorOpacity, titleOpacity, setIsLoginVisible);
+      hideLoginFormAnimation(
+        translateY,
+        paramTranslateY,
+        swipeIndicatorOpacity,
+        titleOpacity,
+        setIsLoginVisible
+      );
     } else {
-      showLoginFormAnimation(translateY, paramTranslateY, swipeIndicatorOpacity, titleOpacity, setIsLoginVisible);
+      showLoginFormAnimation(
+        translateY,
+        paramTranslateY,
+        swipeIndicatorOpacity,
+        titleOpacity,
+        setIsLoginVisible
+      );
     }
   };
 
-  const handleLogin = () => {
+  const handleLogin = (router: ReturnType<typeof useRouter>) => {
     const fakeToken = "1234567890";
     dispatch(login({ email, token: fakeToken }));
-    hideLoginFormAnimation(translateY, paramTranslateY, swipeIndicatorOpacity, titleOpacity, setIsLoginVisible);
+  
+    hideLoginFormAnimation(
+      translateY,
+      paramTranslateY,
+      swipeIndicatorOpacity,
+      titleOpacity,
+      setIsLoginVisible
+    );
+  
+    if (__DEV__) {
+      router.push("/screens/RegisterStep1");
+    }
   };
 
   const handleLogout = () => {

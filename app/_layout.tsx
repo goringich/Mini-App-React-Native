@@ -1,14 +1,14 @@
-import { Slot, useRouter } from "expo-router";
+import { Slot, useRouter, usePathname } from "expo-router";
 import { Provider, useSelector } from "react-redux";
 import { store, RootState } from "../store";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Layout = () => {
   return (
     <Provider store={store}>
-      <AuthWrapper>
+      {/* <AuthWrapper> */}
         <Slot />
-      </AuthWrapper>
+      {/* </AuthWrapper> */}
     </Provider>
   );
 };
@@ -16,32 +16,40 @@ const Layout = () => {
 const AuthWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const auth = useSelector((state: RootState) => state.auth);
   const router = useRouter();
+  const pathname = usePathname();
+  const isRedirecting = useRef(false);
+  const [isReady, setIsReady] = useState(false);
+
+  // Добавляем небольшую задержку перед навигацией
+  useEffect(() => {
+    const timer = setTimeout(() => setIsReady(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
-    if (__DEV__) {
-      // В режиме разработки разрешаем регистрацию без редиректа
-      const publicRoutes = [
-        "/auth/login",
-        "/auth/register-step1",
-        "/auth/register-step2",
-        "/auth/register-step3",
-        "/auth/register-success"
-      ];
+    if (!isReady || isRedirecting.current) return;
+    isRedirecting.current = true;
 
-      if (auth.isAuthenticated) {
+    const publicRoutes = [
+      "/screens/login",
+      "/screens/RegisterStep1",
+      "/screens/RegisterStep2",
+      "/screens/RegisterStep3",
+      "/screens/register-success"
+    ];
+
+    if (auth.isAuthenticated) {
+      if (pathname !== "/home") {
         router.replace("/home");
-      } else if (!publicRoutes.includes(router.pathname)) {
-        router.replace("/screens/login");
       }
-    } else {
-      // В продакшене - строгая логика
-      if (auth.isAuthenticated) {
-        router.replace("/home");
-      } else {
-        router.replace("/screens/login");
-      }
+    } else if (!publicRoutes.includes(pathname)) {
+      router.push("/screens/login");
     }
-  }, [auth.isAuthenticated, router.pathname]);
+
+    setTimeout(() => {
+      isRedirecting.current = false;
+    }, 500);
+  }, [auth.isAuthenticated, pathname, isReady]);
 
   return <>{children}</>;
 };

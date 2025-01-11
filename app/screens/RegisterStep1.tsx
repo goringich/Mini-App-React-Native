@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 
 const RegisterStep1 = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -48,7 +48,7 @@ const RegisterStep1 = () => {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("RegisterStep2")}
+          onPress={() => router.push("/screens/RegisterStep2")}
         >
           <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
@@ -95,5 +95,8 @@ const styles = StyleSheet.create({
   disabledButton: { backgroundColor: "#333", padding: 12, borderRadius: 8 },
   buttonText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
 });
+
+export default RegisterStep1;
+
 
 export default RegisterStep1;
