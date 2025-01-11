@@ -9,6 +9,8 @@
     "skipLibCheck": true,
     "strict": true,
     "paths": {
+      "@colors": ["constants/Colors"],
+      "@styles": ["constants/loginScreen"],
       "@/*": [
         "./*"
       ]

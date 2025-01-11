@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components/native";
+import { Colors } from "@colors";
 
 interface FormTitleProps {
   text: string;
 }
 
 const TitleText = styled.Text`
-  color: white;
+  color:  ${Colors.dark.white};
   font-size: 22px;
   font-weight: bold;
   text-align: left;

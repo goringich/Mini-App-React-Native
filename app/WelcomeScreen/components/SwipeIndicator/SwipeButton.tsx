@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Svg, { Circle } from "react-native-svg";
+import { Colors } from '@colors';
 
 interface SwipeButtonProps {
   onPress: () => void;
@@ -13,7 +14,7 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({ onPress }) => {
       <View style={styles.circleContainer}>
         <Svg height="37" width="37">
           <Circle cx={17} cy={17} r={17} stroke="rgba(255,255,255,0.85)" strokeWidth={1} fill="transparent" />
-          <Circle cx={17} cy={17} r={14} stroke="rgba(255,255,255,0.7)" strokeWidth={1} fill="transparent" />
+          <Circle cx={17} cy={17} r={14} stroke={Colors.dark.textSecondary} strokeWidth={1} fill="transparent" />
           <Circle cx={17} cy={17} r={10} stroke="rgba(255,255,255,0.5)" strokeWidth={1} fill="rgba(255,255,255,0.7)" />
         </Svg>
       </View>
@@ -26,10 +27,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     position: "absolute",
-    bottom: 30,
   },
   text: {
-    color: "#FFFFFF",
+    color: Colors.dark.textWhite,
     fontSize: 22,
     marginRight: 8,
   },

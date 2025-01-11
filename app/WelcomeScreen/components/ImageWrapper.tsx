@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, Animated } from "react-native";
 import styled from "styled-components/native";
 
+
 interface ImageWrapperProps {
   scaleImage: Animated.AnimatedInterpolation;
   imageTranslateY: Animated.Value;
@@ -40,7 +41,6 @@ const styles = StyleSheet.create({
   },
   touchable: {
     alignItems: "center",
-
   },
   imageWrapper: {
     position: "relative",

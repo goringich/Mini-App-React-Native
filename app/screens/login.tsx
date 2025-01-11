@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Dimensions, Animated, PanResponder } from "react-native";
+import { Animated, PanResponder } from "react-native";
 import styled from "styled-components/native";
+import { Colors } from "@colors";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../../store/slices/authSlice";
@@ -8,7 +9,6 @@ import { RootState } from "../../store/index";
 
 import Overlay from "../auth/components/Overlay";
 import WelcomeScreen from "../WelcomeScreen/WelcomeScreen";
-import SwipeIndicator from "../WelcomeScreen/components/SwipeIndicator/SwipeIndicator";
 import AuthForm from "../auth/AuthForm/AuthForm";
 import {
   createAnimatedValues,
@@ -18,7 +18,7 @@ import {
 
 const Container = styled.View`
   flex: 1;
-  background-color: #121212;
+  background-color: ${Colors.dark.backgroundFill};
   position: relative;
 `;
 
@@ -26,7 +26,6 @@ const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoginVisible, setIsLoginVisible] = useState(false);
-  const [swipeIndicatorWidth, setSwipeIndicatorWidth] = useState(0);
   const dispatch = useDispatch();
   const auth = useSelector((state: RootState) => state.auth);
 
@@ -79,15 +78,8 @@ const LoginScreen: React.FC = () => {
           titleOpacity={titleOpacity}
           panHandlers={panResponder.panHandlers}
           onImagePress={toggleLoginForm}
-        />
-
-        <SwipeIndicator
-          onLayout={(event) => setSwipeIndicatorWidth(event.nativeEvent.layout.width)}
-          style={{
-            transform: [{ translateX: -swipeIndicatorWidth / 2 }],
-            opacity: swipeIndicatorOpacity,
-          }}
-          onPress={toggleLoginForm} 
+          swipeIndicatorOpacity={swipeIndicatorOpacity}
+          toggleLoginForm={toggleLoginForm}
         />
 
         {isLoginVisible && (

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import { TouchableOpacity, Text, GestureResponderEvent } from "react-native";
+import { Colors } from "@colors";
 
 interface LoginButtonProps {
   onPress: (event: GestureResponderEvent) => void;
@@ -9,14 +10,14 @@ interface LoginButtonProps {
 const StyledButton = styled.TouchableOpacity`
   width: 100%;
   padding: 15px;
-  background-color: #FFBE17;
+  background-color: ${Colors.dark.buttonBackground};
   border-radius: 16px;
   align-items: center;
   justify-content: center;
 `;
 
 const ButtonText = styled.Text`
-  color: #000;
+  color: ${Colors.dark.buttonText};
   font-size: 16px;
   font-weight: bold;
 `;

@@ -9,7 +9,7 @@ interface TitleProps {
 const TitleContainer = styled(Animated.View)`
   position: absolute;
   top: 136px;
-  width: 353px;
+  width: 330px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,7 @@ const Title: React.FC<TitleProps> = ({ opacity }) => {
       <TitleText>
         Everything you need to achieve an
         {"\n"}
-        <SubTitleText>aesthetic,</SubTitleText>
+        <SubTitleText>aesthetic, </SubTitleText>
         <SubTitleText>sculpted physique</SubTitleText>
       </TitleText>
     </TitleContainer>

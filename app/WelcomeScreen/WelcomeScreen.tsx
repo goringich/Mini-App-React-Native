@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { TouchableOpacity, View, StyleSheet, Animated } from "react-native";
 import styled from "styled-components/native";
 import muscleImage from "../../assets/images/login/react-logo.png";
+import SwipeIndicator from "./components/SwipeIndicator/SwipeIndicator";
 import Title from "./components/Title";
 import ImageWrapper from "./components/ImageWrapper";
+import { Colors } from "@colors";
 
 interface WelcomeScreenProps {
   translateY: Animated.Value;
@@ -12,41 +14,51 @@ interface WelcomeScreenProps {
   titleOpacity: Animated.Value;
   panHandlers: any;
   onImagePress: () => void;
+  swipeIndicatorOpacity: Animated.Value;
+  toggleLoginForm: () => void;
 }
 
 const styles = StyleSheet.create({
   touchable: {
     alignItems: "center",
   },
+  swipeContainer: {
+    position: "absolute",
+    bottom: 40, 
+    left: 0,
+    right: 0,
+    alignItems: "center", 
+    justifyContent: "center",
+  },
 });
 
 const BackgroundFillBlack = styled.View`
   width: 80%;
   height: 100%;
-  background-color: #121212;
+  background-color: ${Colors.dark.backgroundFill};
   border-bottom-left-radius: 90px;
   border-bottom-right-radius: 90px;
   position: relative;
-
   bottom: 15px;
 `;
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
   translateY,
   paramTranslateY,
-  imageTranslateY,
   titleOpacity,
   panHandlers,
   onImagePress,
+  swipeIndicatorOpacity,
+  toggleLoginForm,
 }) => {
-  // Интерполяция масштаба напрямую от paramTranslateY
+  const [swipeIndicatorWidth, setSwipeIndicatorWidth] = useState(0);
+
   const adjustedScaleImage = paramTranslateY.interpolate({
     inputRange: [0, 1],
     outputRange: [0.65, 1],
     extrapolate: "clamp",
   });
 
-  // Интерполяция translateY также напрямую от paramTranslateY
   const adjustedTranslateY = paramTranslateY.interpolate({
     inputRange: [0, 1],
     outputRange: [150, 0],
@@ -82,6 +94,17 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
           </BackgroundFillBlack>
         </TouchableOpacity>
       </Animated.View>
+
+    <View style={styles.swipeContainer}>
+      <SwipeIndicator
+        onLayout={(event) => setSwipeIndicatorWidth(event.nativeEvent.layout.width)}
+        style={{
+          transform: [{ translateX: -swipeIndicatorWidth / 2 }],
+          opacity: swipeIndicatorOpacity,
+        }}
+        onPress={toggleLoginForm}
+      />
+    </View>
     </>
   );
 };

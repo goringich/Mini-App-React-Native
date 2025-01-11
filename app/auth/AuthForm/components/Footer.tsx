@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import { Colors } from "@colors";
 
 interface FooterProps {
   children: React.ReactNode;
@@ -22,22 +23,21 @@ const FooterContainer = styled.View`
 `;
 
 const FooterTextStyled = styled.Text`
-  color: rgba(255, 255, 255, 0.7);
+  color: ${Colors.dark.textSecondary};
   text-align: right;
   text-decoration-line: underline;
   margin: 10px 0 15px;
 `;
 
 const FooterTextWithoutUnderlineStyled = styled.Text`
-  color: rgba(255, 255, 255, 0.7);
+  color: ${Colors.dark.textSecondary};
   text-align: right;
   text-decoration-line: none;
   margin: 10px 0 15px;
 `;
 
-
 const HighlightTextStyled = styled.Text`
-  color: #ffbe17;
+  color: ${Colors.dark.highlight};
   text-decoration-line: underline;
   margin-left: 5px; 
 `;
