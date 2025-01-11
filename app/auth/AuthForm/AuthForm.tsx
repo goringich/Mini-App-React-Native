@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components/native";
 import { TouchableOpacity, Animated } from "react-native";
-import FormTitle from "./FormTitle";
-import InputField from "./InputField";
-import LoginButton from "./LoginButton";
-import Footer from "./Footer";
+import FormTitle from "./components/FormTitle";
+import InputField from "./components/InputField";
+import LoginButton from "./components/LoginButton";
+import Footer from "./components/Footer";
 
 interface AuthFormProps {
   email: string;

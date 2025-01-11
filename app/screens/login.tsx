@@ -8,8 +8,8 @@ import { RootState } from "../../store/index";
 
 import Overlay from "../auth/components/Overlay";
 import WelcomeScreen from "../WelcomeScreen/WelcomeScreen";
-import SwipeIndicator from "../auth/components/SwipeIndicator/SwipeIndicator";
-import AuthForm from "../auth/components/AuthForm/AuthForm";
+import SwipeIndicator from "../WelcomeScreen/components/SwipeIndicator/SwipeIndicator";
+import AuthForm from "../auth/AuthForm/AuthForm";
 import {
   createAnimatedValues,
   showLoginFormAnimation,
