@@ -22,34 +22,6 @@ https://github.com/user-attachments/assets/0b878eb3-aa6a-4503-b1ec-26ed870b9f9b
 
 ---
 
-## 📂 Структура проекта
-
-```
-📦 FitnessApp
- ┣ 📂 app
- ┃ ┣ 📂 auth
- ┃ ┃ ┣ 📂 components
- ┃ ┣ 📂 home
- ┃ ┃ ┣ 📂 navigation
- ┃ ┣ 📂 screens
- ┃ ┃ ┣ 📂 RegisterSteps
- ┃ ┃ ┣ 📂 WelcomeScreen
- ┣ 📂 assets
- ┣ 📂 components
- ┃ ┣ 📂 __tests__
- ┣ 📂 constants
- ┣ 📂 hooks
- ┣ 📂 node_modules
- ┣ 📂 scripts
- ┣ 📂 store
- ┣ 📜 app.json
- ┣ 📜 babel.config.js
- ┣ 📜 declarations.d.ts
-
-```
-
----
-
 ## 🛠 Установка и запуск
 
 ### 1️⃣ Клонируйте репозиторий
