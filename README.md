@@ -1,55 +1,73 @@
-# Welcome to your Expo app 👋
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 
-https://github.com/user-attachments/assets/3214e566-2f55-452c-a64f-6bf9e1623ea9
+# 🏋️‍♂️ FitnessApp
+
+**FitnessApp** — это мобильное приложение для фитнес-трекинга, разработанное на **React Native (Expo) + TypeScript**. Оно поддерживает **Redux** для управления состоянием и **Stack Navigator** для удобной навигации.
 
 
 
-## Get started
+https://github.com/user-attachments/assets/0b878eb3-aa6a-4503-b1ec-26ed870b9f9b
 
-1. Install dependencies
 
-   ```bash
-   npm install
-   ```
 
-2. Start the app
+---
 
-   ```bash
-    npx expo start
-   ```
+## 🚀 Используемые технологии
 
-In the output, you'll find options to open the app in a
+- **React Native + Expo** — для создания и запуска приложения
+- **TypeScript** — для статической типизации и повышения качества кода
+- **Redux Toolkit** — для управления состоянием
+- **React Navigation (Stack Navigator)** — для навигации между экранами
+- **SCSS** — для стилизации (вынесено отдельно от кода)
+- **Metro Bundler** — вместо Webpack для сборки проекта
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📂 Структура проекта
 
-## Get a fresh project
+```
+📦 FitnessApp
+ ┣ 📂 app
+ ┃ ┣ 📂 auth
+ ┃ ┃ ┣ 📂 components
+ ┃ ┣ 📂 home
+ ┃ ┃ ┣ 📂 navigation
+ ┃ ┣ 📂 screens
+ ┃ ┃ ┣ 📂 RegisterSteps
+ ┃ ┃ ┣ 📂 WelcomeScreen
+ ┃ ┃ ┃ ┣ 📂 components
+ ┣ 📂 assets
+ ┣ 📂 components
+ ┃ ┣ 📂 __tests__
+ ┣ 📂 constants
+ ┣ 📂 hooks
+ ┣ 📂 node_modules
+ ┣ 📂 scripts
+ ┣ 📂 store
+ ┣ 📜 .gitignore
+ ┣ 📜 app.json
+ ┣ 📜 babel.config.js
+ ┣ 📜 declarations.d.ts
 
-When you're ready, run:
-
-```bash
-npm run reset-project
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 🛠 Установка и запуск
 
-To learn more about developing your project with Expo, look at the following resources:
+### 1️⃣ Клонируйте репозиторий
+```bash
+git clone https://github.com/goringich/Mini-App-React-Native.git
+cd Mini-App-React-Native
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 2️⃣ Установите зависимости
+```bash
+yarn install
+```
 
-## Join the community
+### 3️⃣ Запустите приложение
+```bash
+yarn expo start
+```
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
