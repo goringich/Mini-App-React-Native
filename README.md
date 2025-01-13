@@ -18,7 +18,6 @@ https://github.com/user-attachments/assets/0b878eb3-aa6a-4503-b1ec-26ed870b9f9b
 - **TypeScript** — для статической типизации и повышения качества кода
 - **Redux Toolkit** — для управления состоянием
 - **React Navigation (Stack Navigator)** — для навигации между экранами
-- **SCSS** — для стилизации (вынесено отдельно от кода)
 - **Metro Bundler** — вместо Webpack для сборки проекта
 
 ---
