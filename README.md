@@ -35,7 +35,6 @@ https://github.com/user-attachments/assets/0b878eb3-aa6a-4503-b1ec-26ed870b9f9b
  ┃ ┣ 📂 screens
  ┃ ┃ ┣ 📂 RegisterSteps
  ┃ ┃ ┣ 📂 WelcomeScreen
- ┃ ┃ ┃ ┣ 📂 components
  ┣ 📂 assets
  ┣ 📂 components
  ┃ ┣ 📂 __tests__
@@ -44,7 +43,6 @@ https://github.com/user-attachments/assets/0b878eb3-aa6a-4503-b1ec-26ed870b9f9b
  ┣ 📂 node_modules
  ┣ 📂 scripts
  ┣ 📂 store
- ┣ 📜 .gitignore
  ┣ 📜 app.json
  ┣ 📜 babel.config.js
  ┣ 📜 declarations.d.ts
