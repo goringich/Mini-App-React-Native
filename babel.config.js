@@ -7,7 +7,8 @@ module.exports = {
       {
         alias: {
           "@styles": "./constants/Styles.ts",
-          "@colors": "./constants/Colors.ts"
+          "@colors": "./constants/Colors.ts",
+          "@components": "./components"
         }
       }
     ]

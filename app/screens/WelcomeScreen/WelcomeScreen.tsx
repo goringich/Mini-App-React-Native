@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TouchableOpacity, View, StyleSheet, Animated } from "react-native";
 import styled from "styled-components/native";
-import muscleImage from "../../assets/images/login/react-logo.png";
+import muscleImage from "../../../assets/images/login/react-logo.png";
 import SwipeIndicator from "./components/SwipeIndicator/SwipeIndicator";
 import Title from "./components/Title";
 import ImageWrapper from "./components/ImageWrapper";

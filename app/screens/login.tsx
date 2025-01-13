@@ -9,7 +9,7 @@ import { login, logout } from "../../store/slices/authSlice";
 import { RootState } from "../../store/index";
 
 import Overlay from "../auth/components/Overlay";
-import WelcomeScreen from "../WelcomeScreen/WelcomeScreen";
+import WelcomeScreen from "./WelcomeScreen/WelcomeScreen";
 import AuthForm from "../auth/AuthForm/AuthForm";
 import {
   createAnimatedValues,
@@ -91,7 +91,7 @@ const LoginScreen: React.FC = () => {
     );
   
     if (__DEV__) {
-      router.push("/screens/RegisterStep1");
+      router.push("/screens/RegisterSteps/RegisterStep1");
     }
   };
 

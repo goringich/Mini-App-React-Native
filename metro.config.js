@@ -5,8 +5,9 @@ const defaultConfig = getDefaultConfig(__dirname);
 
 // поддержка alias
 defaultConfig.resolver.extraNodeModules = {
-  '@colors': path.resolve(__dirname, './constants/Colors.ts'),
-  '@styles': path.resolve(__dirname, './constants/Styles.ts')
+  '@colors': path.resolve(__dirname, 'constants/Colors.ts'),
+  '@styles': path.resolve(__dirname, 'constants/Styles.ts'),
+  '@components': path.resolve(__dirname, 'components')
 };
 
 // поддержка SCSS и SASS

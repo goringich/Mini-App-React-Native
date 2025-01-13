@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../screens/login';
-import RegisterStep1 from '../screens/RegisterStep1';
-import RegisterStep2 from '../screens/RegisterStep2';
+import RegisterStep1 from '../screens/RegisterSteps/RegisterStep1';
+import RegisterStep2 from '../screens/RegisterSteps/RegisterStep2';
 // import RegisterStep3 from '../auth/RegisterStep3';
 // import RegisterSuccess from '../auth/RegisterSuccess';
 

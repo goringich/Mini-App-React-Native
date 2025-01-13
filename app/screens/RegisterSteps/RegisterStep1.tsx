@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
+import InputField from "@components/InputField";
 
 const RegisterStep1 = () => {
   const router = useRouter();
@@ -20,15 +15,13 @@ const RegisterStep1 = () => {
 
       <Text style={styles.label}>Create account</Text>
 
-      <TextInput
-        style={styles.input}
+      <InputField
         placeholder="E-mail"
         placeholderTextColor="#777"
         value={email}
         onChangeText={setEmail}
       />
-      <TextInput
-        style={styles.input}
+      <InputField
         placeholder="Password"
         placeholderTextColor="#777"
         secureTextEntry
@@ -77,13 +70,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   label: { color: "#fff", fontSize: 18, marginBottom: 8 },
-  input: {
-    backgroundColor: "#1E1E1E",
-    color: "#fff",
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 10,
-  },
   loginText: { color: "#aaa", textAlign: "center", marginVertical: 10 },
   loginLink: { color: "#FFA500" },
   buttonContainer: {
@@ -95,8 +81,5 @@ const styles = StyleSheet.create({
   disabledButton: { backgroundColor: "#333", padding: 12, borderRadius: 8 },
   buttonText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
 });
-
-export default RegisterStep1;
-
 
 export default RegisterStep1;
