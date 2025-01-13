@@ -78,7 +78,7 @@ const LoginScreen: React.FC = () => {
     }
   };
 
-  const handleLogin = (router: ReturnType<typeof useRouter>) => {
+  const handleLogin = () => {
     const fakeToken = "1234567890";
     dispatch(login({ email, token: fakeToken }));
   
